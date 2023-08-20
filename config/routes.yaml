@@ -1,0 +1,20 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+api_products_list:
+    path: /api/products
+    controller: App\Controller\ProductController::productList
+    methods: GET
+
+api_product_details:
+    path: /api/products/{id}
+    controller: App\Controller\ProductController::productDetails
+    methods: GET
+
+app_report:
+    path: /report
+    controller: App\Controller\ReportController::index
+    methods: GET

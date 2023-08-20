@@ -1,0 +1,53 @@
+{# templates/report/index.html.twig #}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Most Sold Products Report</title>
+    <!-- Подключение стилей DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+</head>
+<body>
+<h1>Most Sold Products Report</h1>
+<table class="datatable">
+    <thead>
+    <tr>
+        <th>Product Name</th>
+        <th>Sold Amount</th>
+        <th>Sold Sum</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for product in mostSoldProducts %}
+        <tr>
+            <td>{{ product.productName }}</td>
+            <td>{{ product.soldAmount }}</td>
+            <td>{{ product.soldSum }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Подключение скрипта DataTables -->
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.datatable').DataTable({
+            "pageLength": 10, // Количество записей на странице
+            "columnDefs": [
+                {
+                    "targets": "_all", // Все колонки
+                    "className": "dt-center" // Выравнивание текста по центру
+                }
+            ],
+            "searching": false, // Включение поиска
+            "paging": true, // Включение пагинации
+            "info": true // Отображение информации о текущей странице и количестве записей
+        });
+    });
+</script>
+</html>
